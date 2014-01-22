@@ -5,8 +5,8 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="home.jsp">Timeline</a></li>
-				<li><a href="storage.jsp">Profile</a></li>
+				<li><a href="timeline">Timeline</a></li>
+				<li><a href="profile.jsp">Profile</a></li>
 				<% if (session.getAttribute("username") != null) { %>
 					<% if (session.getAttribute("role").equals("admin")) { %>
 						<li><a href="UserList">User List</a></li>
