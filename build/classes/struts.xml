@@ -9,9 +9,8 @@
 	<constant name="struts.devMode" value="false" />
 
 	<package name="default" extends="struts-default" namespace="/">
-		<action name="index"
-			class="view.Home">
-			<result name="success">index.jsp</result>
+		<action name="index">
+			<result>index.jsp</result>
 		</action>
 	</package>
 </struts>
