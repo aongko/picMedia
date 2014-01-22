@@ -7,13 +7,8 @@
 			<ul class="nav navbar-nav">
 				<li><a href="timeline">Timeline</a></li>
 				<li><a href="profile.jsp">Profile</a></li>
-				<% if (session.getAttribute("username") != null) { %>
-					<% if (session.getAttribute("role").equals("admin")) { %>
-						<li><a href="UserList">User List</a></li>
-					<% } %>
-				<% } %>
 				<li class="navbar-right">
-					<span style="color:white">Welcome, <%= session.getAttribute("name") %> </span>
+					<span style="color:white">Welcome, <s:property value="fullname"></s:property></span>
 				</li>
 				<li class="navbar-right">
 					<a href="" class="btn btn-danger">Logout</a>
