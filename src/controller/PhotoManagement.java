@@ -18,6 +18,7 @@ import util.HibernateUtil;
 public class PhotoManagement 
 {
 	private static SessionFactory factory; 
+	
 	public PhotoManagement()
 	{
 		try {
@@ -49,7 +50,7 @@ public class PhotoManagement
 			photos = session.createQuery("from Photo").list();
 			for (Iterator iterator = (Iterator) photos.iterator(); iterator.hasNext();) {
 				Photo ph = (Photo) iterator.next(); 
-				System.out.println("Source : " + ph.getSrc());
+				System.out.println("Source : " + ph.getUserID());
 			}
 			tx.commit();
 		} catch (HibernateException e) {

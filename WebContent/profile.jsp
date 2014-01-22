@@ -14,13 +14,13 @@
 					<img src="resources/image/starlight.jpg">
 					<div class="subHeaderContent">
 						<s:file classCss="form-control"></s:file>
-						<a href="/<s:property value="UserID" />" >
+						<a href="<%= session.getAttribute("userid") %>" >
 							<div id="followers">
 								<span id="txtFollowers">Followers</span>
 								<spand id="numFollowers">112</spand>
 							</div>
 						</a>
-						<a href="/<s:property value="UserID" />">
+						<a href="<%= session.getAttribute("userid") %>">
 							<div id="following">
 								<span id="txtFollowing">Following</span>
 								<spand id="numFollowing">313</spand>
@@ -29,8 +29,7 @@
 					</div>
 				</div>
 				<div class="content">
-					<s:iterator value="photoList" var="photo">
-						asdfas
+					<s:iterator value="photoList" var="Photo">
 					    <div class="image">
 					    	<img src="resources/image/<s:property value="src" />" />
 					    </div> 
