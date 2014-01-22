@@ -1,0 +1,82 @@
+form label {
+	color: #000000 !important;
+	font-size: 15px !important;
+}
+
+form table.form-signin {
+	margin: 0 auto;
+}
+
+.bodyPhoto {
+	width:100%;
+}
+.bodyPhoto > div{
+	width:50%;
+	float:left;
+	min-height:500px
+}
+.tagDiv div{
+	width:110px;
+	height:110px;
+	border:5px ridge white;
+}
+.tagDiv input{
+	width:100px;
+	margin-left:5px;
+}
+.detailPhoto{
+	width:100%;
+	height:400px;
+	overflow:auto;
+}
+
+.detailPhoto div{
+	width:100%;
+}
+
+.headerContent {
+	margin: auto;
+	align: center;
+}
+
+.headerContent img {
+	padding: 10px;
+	width: 150px;
+	float:left;
+}
+
+.subHeaderContent {
+	margin-top: 30px;
+	float:left;
+}
+
+#txtFollowers,
+#txtFollowing {
+	font-size: 12px;
+}
+
+#numFollowers,
+#numFollowing {
+	font-size: 14px;
+}
+
+#followers,
+#following {
+	cursor: pointer;
+	width: 76px;
+	height: 59px;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 10px;
+	border-color: #2E2EFE;
+	padding: 10px;
+	float: left;
+	text-align:center;
+	margin: 0 5px 0 5px;
+	color: #2E2EFE;
+}
+
+.subHeaderContent :hover {
+	border-color: #000000;
+	background-color: #FBF5EF;
+}

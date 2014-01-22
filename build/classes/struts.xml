@@ -12,5 +12,11 @@
 		<action name="index">
 			<result>index.jsp</result>
 		</action>
+		<action name="timeline">
+			<result>timeline.jsp</result>
+		</action>
+		<action name="profile">
+			<result>profile.jsp</result>
+		</action>
 	</package>
 </struts>
