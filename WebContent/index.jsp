@@ -4,6 +4,8 @@
 	<!-- include header file -->
 	<%@ include file = "template-page/tempHeader.jsp" %>
 	<body>
+		<% if (session.getAttribute("username") != null) response.sendRedirect("index.jsp"); %>
+		
 		<%@ include file = "template-page/tempNavNonLogin.jsp" %>
 		
 		<div class="container">
@@ -14,6 +16,15 @@
 					<s:textfield cssClass="form-control" name="userlogin.name" label="Full Name"></s:textfield>
 					<s:password cssClass="form-control" name="userlogin.pass" label="Password"></s:password>
 					<s:password cssClass="form-control" name="userlogin.confpass" label="Confirm Password"></s:password>
+					
+					<%
+						String errReg = (String)request.getAttribute("errReg");
+						if (errReg != null) {
+					%>
+							<div style="text-align:center">
+								<%= errReg %>
+							</div>
+					<% } %>
 					<s:submit cssClass="btn btn-success" value="Register" cssStyle="text-align:center"></s:submit>
 				</s:form>
 			</div>

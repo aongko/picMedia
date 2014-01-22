@@ -20,10 +20,6 @@
 			class="view.PhotoAction">
 			<result>profile.jsp</result>
 		</action>
-		<action name="upload"
-			class="view.PhotoAction.uploadFile">
-			<result>profile.jsp</result>
-		</action>
 	</package>
 	
 </struts>

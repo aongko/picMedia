@@ -76,11 +76,7 @@ form table.form-signin {
 	color: #2E2EFE;
 }
 
-#upload {
-	width: 800px;
-}
-
-.subHeaderContent a :hover {
+.subHeaderContent :hover {
 	border-color: #000000;
 	background-color: #FBF5EF;
 }

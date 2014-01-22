@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2014 at 06:35 PM
+-- Generation Time: Jan 22, 2014 at 07:10 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -25,21 +25,6 @@ USE `picmedia`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `humanrelation`
---
-
-CREATE TABLE IF NOT EXISTS `humanrelation` (
-  `HumanRelationID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `FollowerID` bigint(20) NOT NULL,
-  `FollowingID` bigint(20) NOT NULL,
-  PRIMARY KEY (`HumanRelationID`),
-  KEY `FollowerID` (`FollowerID`),
-  KEY `FollowingID` (`FollowingID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `photo`
 --
 
@@ -52,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `photo` (
   `Width` int(11) NOT NULL,
   `Height` int(11) NOT NULL,
   `Src` text NOT NULL,
-  `Description` text,
+  `Description` text NOT NULL,
   PRIMARY KEY (`PhotoID`),
   KEY `UserID` (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -120,36 +105,17 @@ CREATE TABLE IF NOT EXISTS `userlogin` (
   `UserID` bigint(11) NOT NULL AUTO_INCREMENT,
   `UserName` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
-  `FullName` varchar(100) NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `MiddleName` varchar(50) DEFAULT NULL,
+  `LastName` varchar(50) DEFAULT NULL,
   `Email` varchar(100) NOT NULL,
-  `Photo` varchar(100) DEFAULT NULL,
-  `TagLine` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`UserID`),
   UNIQUE KEY `UserName` (`UserName`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `userlogin`
---
-
-INSERT INTO `userlogin` (`UserID`, `UserName`, `Password`, `FullName`, `Email`, `Photo`, `TagLine`) VALUES
-(1, 'admin', 'admin', 'admin', 'admin@picmedia.com', 'admin.jpg', 'being God isn''t that bad'),
-(2, 'aongko', 'aongko', 'Andrew Ongko', 'Andrew.Ongko@gmail.com', NULL, NULL),
-(3, 'DeimonDB', 'DeimonDB', 'Teddy Budiono Hermawan', 'caladbolg_student@hotmail.com', NULL, NULL),
-(4, 'Silvranz', 'silvranz', 'Nicholas', 'silvranz@gmail.com', NULL, NULL),
-(5, 'kokki100', 'kokki100', 'Daniel Agusta', 'combination1234@gmail.com', NULL, NULL),
-(6, 'akurniawan', 'akurniawan', 'Aditya Kurniawan', 'aditya.kurniawan25@gmail.com', NULL, NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `humanrelation`
---
-ALTER TABLE `humanrelation`
-  ADD CONSTRAINT `humanrelation_ibfk_2` FOREIGN KEY (`FollowingID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `humanrelation_ibfk_1` FOREIGN KEY (`FollowerID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `photo`
@@ -161,22 +127,22 @@ ALTER TABLE `photo`
 -- Constraints for table `photocomment`
 --
 ALTER TABLE `photocomment`
-  ADD CONSTRAINT `photocomment_ibfk_1` FOREIGN KEY (`PhotoID`) REFERENCES `photo` (`PhotoID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `photocomment_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `photocomment_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `photocomment_ibfk_1` FOREIGN KEY (`PhotoID`) REFERENCES `photo` (`PhotoID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `photolike`
 --
 ALTER TABLE `photolike`
-  ADD CONSTRAINT `photolike_ibfk_1` FOREIGN KEY (`PhotoID`) REFERENCES `photo` (`PhotoID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `photolike_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `photolike_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `photolike_ibfk_1` FOREIGN KEY (`PhotoID`) REFERENCES `photo` (`PhotoID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `phototag`
 --
 ALTER TABLE `phototag`
-  ADD CONSTRAINT `phototag_ibfk_1` FOREIGN KEY (`PhotoID`) REFERENCES `photo` (`PhotoID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `phototag_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `phototag_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `phototag_ibfk_1` FOREIGN KEY (`PhotoID`) REFERENCES `photo` (`PhotoID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

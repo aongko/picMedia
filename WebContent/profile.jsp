@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -12,19 +13,14 @@
 				<div class="headerContent">
 					<img src="resources/image/starlight.jpg">
 					<div class="subHeaderContent">
-						<div id="upload">
-							<s:form action="upload">
-								<s:file classCss="form-control"></s:file>
-								<s:submit classCss="btn btn-success"></s:submit>
-							</s:form>
-						</div>
-						<a href="/<s:property value="userid" />" >
+						<s:file classCss="form-control"></s:file>
+						<a href="/<s:property value="UserID" />" >
 							<div id="followers">
 								<span id="txtFollowers">Followers</span>
 								<spand id="numFollowers">112</spand>
 							</div>
 						</a>
-						<a href="/<s:property value="userid" />">
+						<a href="/<s:property value="UserID" />">
 							<div id="following">
 								<span id="txtFollowing">Following</span>
 								<spand id="numFollowing">313</spand>
@@ -34,6 +30,7 @@
 				</div>
 				<div class="content">
 					<s:iterator value="photoList" var="photo">
+						asdfas
 					    <div class="image">
 					    	<img src="resources/image/<s:property value="src" />" />
 					    </div> 
