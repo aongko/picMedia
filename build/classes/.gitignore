@@ -1,3 +1,7 @@
-/model
 /controller
+/file
+/hibernate.cfg.xml
+/model
+/struts.xml
+/util
 /view

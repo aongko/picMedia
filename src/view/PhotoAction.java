@@ -8,61 +8,56 @@ import model.Photo;
 import com.opensymphony.xwork2.ActionSupport;
  
 public class PhotoAction extends ActionSupport {
-	
-	private static final long serialVersionUID = 9149826260758390091L;
-	private Photo photo;
-	private List<Photo> photoList;
-	private Long photoId;
-	
-	private PhotoManagement photoManagement;
-	
-	public PhotoAction() {
-		photoManagement = new PhotoManagement();
-	}
-	
-	public String execute() {
-        this.photoList = photoManagement.list();
+ 
+    private static final long serialVersionUID = 9149826260758390091L;
+    private Photo photo;
+    private List<Photo> photoList;
+    private Long id;
+ 
+    private PhotoManagement photoManagement;
+ 
+    public PhotoAction() {
+        photoManagement = new PhotoManagement();
+    }
+ 
+    public String execute() {
+        this.photoList = photoManagement.photoList();
         System.out.println("execute called");
         return SUCCESS;
     }
-	
-	public String add() {
+ 
+    /*public String add() {
         System.out.println(getPhoto());
         try {
-            photoManagement.add(getPhoto());
+        	photoManagement.add(getPhoto());
         } catch (Exception e) {
             e.printStackTrace();
         }
         this.photoList = photoManagement.list();
         return SUCCESS;
-    }
-	
-	public String delete() {
-        photoManagement.delete(getPhotoId());
-        return SUCCESS;
-    }
-	
-	public Photo getPhoto() {
+    }*/
+ 
+    public Photo getPhoto() {
         return photo;
     }
-	
-	public List<Photo> getPhotoList() {
+ 
+    public List<Photo> getPhotoList() {
         return photoList;
     }
-	
-	public void setPhoto(Photo photo) {
+ 
+    public void setPhoto(Photo photo) {
         this.photo = photo;
     }
-	
-	public void setPhotoList(List<Photo> photoList) {
+ 
+    public void setContactList(List<Photo> contactsList) {
         this.photoList = photoList;
     }
-	
-	public Long getPhotoId() {
-        return photoId;
+ 
+    public Long getId() {
+        return id;
     }
  
-    public void setPhotoId(Long photoId) {
-        this.photoId = photoId;
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -46,7 +46,7 @@ form table.form-signin {
 }
 
 .subHeaderContent {
-	margin-top: 30px;
+	margin-top: 20px;
 	float:left;
 }
 
@@ -72,7 +72,7 @@ form table.form-signin {
 	padding: 10px;
 	float: left;
 	text-align:center;
-	margin: 0 5px 0 5px;
+	margin: 10px 5px 0 5px;
 	color: #2E2EFE;
 }
 
