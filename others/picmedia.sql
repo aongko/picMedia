@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2014 at 02:27 PM
+-- Generation Time: Jan 22, 2014 at 07:10 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `photo` (
   `Width` int(11) NOT NULL,
   `Height` int(11) NOT NULL,
   `Src` text NOT NULL,
+  `Description` text NOT NULL,
   PRIMARY KEY (`PhotoID`),
   KEY `UserID` (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -44,15 +45,53 @@ CREATE TABLE IF NOT EXISTS `photo` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `timeline`
+-- Table structure for table `photocomment`
 --
 
-CREATE TABLE IF NOT EXISTS `timeline` (
-  `TimelineID` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `photocomment` (
+  `PhotoCommentID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `PhotoID` bigint(20) NOT NULL,
   `UserID` bigint(20) NOT NULL,
-  `PostDate` datetime NOT NULL,
-  `Content` text NOT NULL,
-  PRIMARY KEY (`TimelineID`),
+  `Date` datetime NOT NULL,
+  `Comment` text NOT NULL,
+  PRIMARY KEY (`PhotoCommentID`),
+  KEY `PhotoID` (`PhotoID`),
+  KEY `UserID` (`UserID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `photolike`
+--
+
+CREATE TABLE IF NOT EXISTS `photolike` (
+  `PhotoLikeID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `PhotoID` bigint(20) NOT NULL,
+  `UserID` bigint(20) NOT NULL,
+  `DateLike` datetime NOT NULL,
+  PRIMARY KEY (`PhotoLikeID`),
+  KEY `PhotoID` (`PhotoID`),
+  KEY `UserID` (`UserID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `phototag`
+--
+
+CREATE TABLE IF NOT EXISTS `phototag` (
+  `PhotoTagID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `PhotoID` bigint(20) NOT NULL,
+  `UserID` bigint(20) NOT NULL,
+  `Date` datetime NOT NULL,
+  `LeftCoordinate` int(11) NOT NULL,
+  `TopCoordinate` int(11) NOT NULL,
+  `TagWidth` int(11) NOT NULL,
+  `TagHeight` int(11) NOT NULL,
+  PRIMARY KEY (`PhotoTagID`),
+  KEY `PhotoID` (`PhotoID`),
   KEY `UserID` (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -66,24 +105,13 @@ CREATE TABLE IF NOT EXISTS `userlogin` (
   `UserID` bigint(11) NOT NULL AUTO_INCREMENT,
   `UserName` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
-  PRIMARY KEY (`UserID`),
-  UNIQUE KEY `UserName` (`UserName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `userprofile`
---
-
-CREATE TABLE IF NOT EXISTS `userprofile` (
-  `UserID` bigint(20) NOT NULL,
   `FirstName` varchar(50) NOT NULL,
   `MiddleName` varchar(50) DEFAULT NULL,
   `LastName` varchar(50) DEFAULT NULL,
   `Email` varchar(100) NOT NULL,
-  PRIMARY KEY (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`UserID`),
+  UNIQUE KEY `UserName` (`UserName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables
@@ -96,16 +124,25 @@ ALTER TABLE `photo`
   ADD CONSTRAINT `photo_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `timeline`
+-- Constraints for table `photocomment`
 --
-ALTER TABLE `timeline`
-  ADD CONSTRAINT `timeline_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `photocomment`
+  ADD CONSTRAINT `photocomment_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `photocomment_ibfk_1` FOREIGN KEY (`PhotoID`) REFERENCES `photo` (`PhotoID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `userprofile`
+-- Constraints for table `photolike`
 --
-ALTER TABLE `userprofile`
-  ADD CONSTRAINT `userprofile_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `photolike`
+  ADD CONSTRAINT `photolike_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `photolike_ibfk_1` FOREIGN KEY (`PhotoID`) REFERENCES `photo` (`PhotoID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `phototag`
+--
+ALTER TABLE `phototag`
+  ADD CONSTRAINT `phototag_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `userlogin` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `phototag_ibfk_1` FOREIGN KEY (`PhotoID`) REFERENCES `photo` (`PhotoID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
