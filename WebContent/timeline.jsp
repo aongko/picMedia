@@ -14,7 +14,7 @@
 		</tr>
 		<s:iterator value="photoList" var="photo">
 		    <tr>
-		        <td><s:property value="photoId"/></td>
+		        <td><s:property value="PhotoID"/></td>
 		        <td><s:property value="src"/> </td>
         		<td><s:property value="description"/></td>
 		    </tr> 
