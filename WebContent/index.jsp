@@ -12,26 +12,26 @@
 		<div class="container">
 			<div class="row">
 				<h2 style="text-align:center">Sign Up</h2><br />
-				<form method="post" class="form-signin" action="Register">
+				<s:form method="post" class="form-signin" action="Register">
 					<table class="table" align="center" style="width:50%">
 						<tr>
 							<td align="left" style="width:51%">Username</td>
-							<td align="right" style="width:100%"><input type="text" class="form-control" name="user"></td>
+							<td align="right" style="width:100%"><s:textfield cssClass="form-control" name="userlogin.user"></s:textfield></td>
 						</tr>
 						<tr>
 							<td align="left" style="width:51%">Full Name</td>
-							<td align="right" style="width:100%"><input type="text" class="form-control" name="name"></td>
+							<td align="right" style="width:100%"><s:textfield cssClass="form-control" name="userlogin.name"></s:textfield></td>
 						</tr>
 						<tr>
 							<td align="left" style="width:51%">Password</td>
-							<td align="right" style="width:100%"><input type="password" class="form-control" name="pass"></td>
+							<td align="right" style="width:100%"><s:password cssClass="form-control" name="userlogin.pass"></s:password></td>
 						</tr>
 						<tr>
 							<td align="left" style="width:51%">Confirm Password</td>
-							<td align="right" style="width:100%"><input type="password" class="form-control" name="confpass"></td>
+							<td align="right" style="width:100%"><s:password cssClass="form-control" name="userlogin.confpass"></s:password></td>
 						</tr>
 					</table>
-					<br>
+					<br />
 					<%
 						String errReg = (String)request.getAttribute("errReg");
 						if (errReg != null) {
@@ -40,11 +40,11 @@
 								<%= errReg %>
 							</div>
 					<% } %>
-					<br/>
+					<br />
 					<p align="center">
-						<input type="submit" class="btn btn-success" value="Register" style="text-align:center">
+						<s:submit cssClass="btn btn-success" value="Register" style="text-align:center"></s:submit>
 					</p>
-				</form>
+				</s:form>
 			</div>
 		</div>
 	</body>
