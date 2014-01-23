@@ -48,10 +48,6 @@ public class PhotoManagement
 		try {
 			tx = session.beginTransaction();
 			photos = session.createQuery("from Photo").list();
-			for (Iterator iterator = (Iterator) photos.iterator(); iterator.hasNext();) {
-				Photo ph = (Photo) iterator.next(); 
-				System.out.println("Source : " + ph.getUserID());
-			}
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) tx.rollback();

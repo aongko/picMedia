@@ -9,7 +9,7 @@
 		<div class="container">
 			<div class="row" style="margin-top:30px">
 				<h2 style="text-align:center">Sign Up</h2><br />
-				<s:form method="post" cssClass="form-signin" action="add">
+				<s:form method="post" cssClass="form-signin" action="register">
 					<s:textfield cssClass="form-control" name="username" label="Username"></s:textfield>
 					<s:password cssClass="form-control" name="password" label="Password"></s:password>
 					<s:textfield cssClass="form-control" name="fullname" label="Full Name"></s:textfield>

@@ -35,6 +35,31 @@ public class LoginAction
     	return "success";
     }
     
+    public String login()
+    {
+    	boolean val = true;
+    	try {
+    		val = login.login(getUsername(), getPassword());
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	System.out.println(val);
+    	if (!val) return "failed";
+    	return "success";
+    }
+    
+    public String logout()
+    {
+    	try {
+    		login.logout();
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	return "success";
+    }
+    
     public void setUsername(String username)
     {
     	this.username = username;

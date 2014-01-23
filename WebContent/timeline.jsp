@@ -12,12 +12,13 @@
 		    <th>src</th>
 		    <th>description</th>
 		</tr>
+		<% out.print(session.getAttribute("userid")); %>
 		<s:iterator value="photoList" var="photo">
 		    <tr>
 		        <td><s:property value="PhotoID"/></td>
 		        <td><s:property value="src"/> </td>
         		<td><s:property value="description"/></td>
-		    </tr> 
+		    </tr>  
 		</s:iterator>
 		</table>
 	</body>
