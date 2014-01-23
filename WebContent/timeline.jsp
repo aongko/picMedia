@@ -6,20 +6,20 @@
 	<%@ include file = "template-page/tempHeader.jsp" %>
 	<body>
 		<%@ include file = "template-page/tempNavLogin.jsp" %>
-		<table border="1">
-		<tr>
-		    <th>photo</th>
-		    <th>src</th>
-		    <th>description</th>
-		</tr>
-		<% out.print(session.getAttribute("userid")); %>
-		<s:iterator value="photoList" var="photo">
-		    <tr>
-		        <td><s:property value="PhotoID"/></td>
-		        <td><s:property value="src"/> </td>
-        		<td><s:property value="description"/></td>
-		    </tr>  
-		</s:iterator>
-		</table>
+		
+		<div>
+			<s:iterator value="photoList" var="photo">
+			    <div id="<s:property value="PhotoID"/>" style="margin-bottom: 25px; background-color: #CCCCCC; border-bottom: 1px solid #666666; padding: 25px;">
+			    	<!-- User: <s:property value="UserID" /> -->
+			    	<div style="text-align: center">
+		        		<img id="photo_<s:property value="PhotoID" />" src="resources/image/<s:property value="src"/>" title="<s:property value="name"/>" style="height: 250px; max-width: 500px; margin-left: 50px;" />
+	        		</div>
+	        		<div class="description" style="width: 500px; margin-left: auto; margin-right: auto;">
+	        			Description: <br />
+	        			<s:property value="description"/>
+	        		</div>
+			    </div>
+			</s:iterator>
+		</div>
 	</body>
 </html>

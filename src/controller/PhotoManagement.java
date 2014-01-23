@@ -47,7 +47,7 @@ public class PhotoManagement
 
 		try {
 			tx = session.beginTransaction();
-			photos = session.createQuery("from Photo").list();
+			photos = session.createQuery("SELECT PhotoID, UserID, Name, Caption, UploadDa, Width, Height, Src, Description from photo").list();
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) tx.rollback();

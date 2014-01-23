@@ -11,7 +11,7 @@
 					<s:textfield cssClass="form-control" name="username" placeholder="Username"></s:textfield>
 				</div>
 				<div class="form-group">
-					<s:password cssClass="form-control" name="password" label="Password" placeholder="Password"></s:password>
+					<s:password cssClass="form-control" name="password" placeholder="Password"></s:password>
 				</div>
 				<button type="submit" class="btn btn-success">Sign in</button>
 			</form>

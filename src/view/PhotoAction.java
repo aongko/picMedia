@@ -47,7 +47,7 @@ public class PhotoAction extends ActionSupport {
         this.photo = photo;
     }
  
-    public void setPhotoList(List<Photo> contactsList) {
+    public void setPhotoList(List<Photo> photoList) {
         this.photoList = photoList;
     }
 }
