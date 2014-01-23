@@ -4,27 +4,16 @@
 	<!-- include header file -->
 	<%@ include file = "template-page/tempHeader.jsp" %>
 	<body>
-		<% if (session.getAttribute("username") != null) response.sendRedirect("index.jsp"); %>
-		
 		<%@ include file = "template-page/tempNavNonLogin.jsp" %>
 		
 		<div class="container">
 			<div class="row" style="margin-top:30px">
 				<h2 style="text-align:center">Sign Up</h2><br />
-				<s:form method="post" cssClass="form-signin" action="register">
-					<s:textfield cssClass="form-control" name="userlogin.user" label="Username"></s:textfield>
-					<s:textfield cssClass="form-control" name="userlogin.name" label="Full Name"></s:textfield>
-					<s:password cssClass="form-control" name="userlogin.pass" label="Password"></s:password>
-					<s:password cssClass="form-control" name="userlogin.confpass" label="Confirm Password"></s:password>
-					
-					<%
-						String errReg = (String)request.getAttribute("errReg");
-						if (errReg != null) {
-					%>
-							<div style="text-align:center">
-								<%= errReg %>
-							</div>
-					<% } %>
+				<s:form method="post" cssClass="form-signin" action="add">
+					<s:textfield cssClass="form-control" name="username" label="Username"></s:textfield>
+					<s:password cssClass="form-control" name="password" label="Password"></s:password>
+					<s:textfield cssClass="form-control" name="fullname" label="Full Name"></s:textfield>
+					<s:textfield cssClass="form-control" name="email" label="Email"></s:textfield>
 					<s:submit cssClass="btn btn-success" value="Register" cssStyle="text-align:center"></s:submit>
 				</s:form>
 			</div>

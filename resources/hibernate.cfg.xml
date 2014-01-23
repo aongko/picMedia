@@ -25,6 +25,7 @@
         <property name="hbm2ddl.auto">update</property>
  
         <mapping class="model.Photo" />
+        <mapping class="model.UserLogin" />
  
     </session-factory>
 </hibernate-configuration>
